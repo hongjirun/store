@@ -1,5 +1,11 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <transition name="router-fade" mode="in-out">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </transition>
+  </div>
 </template>
 
 <script>
