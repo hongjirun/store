@@ -1,37 +1,36 @@
 <template>
   <div id="app">
+    <!--$route.meta.KeepAlive为true进行组件缓存  -->
     <transition name="router-fade" mode="in-out">
-      <keep-alive>
-        <router-view></router-view>
+      <keep-alive >
+        <router-view v-if="$route.meta.KeepAlive"></router-view>
       </keep-alive>
+      <!--$route.meta.KeepAlive为false不进行组件缓存，跳转到这里  -->
     </transition>
-    <home></home>
+    <transition name="router-fade" mode="in-out">
+      <router-view v-if="!$route.meta.keepAlive"></router-view>
+    </transition>
+
   </div>
 </template>
 
 <script>
-import home from './page/Home/home.vue';
+
 export default {
   name: "App",
-  components: {
-    home
-  },
+  
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-.router-fade-enter-active ,.router-fade-leave-active{
-  transition: opacity .3s;
-}
-.router-fade-enter,.router-fade-leave {
-  opacity: 0;
-}
+<style lang="scss">
+  #app {
+    
+    .router-fade-enter-active ,.router-fade-leave-active{
+      transition: opacity .3s;
+    }
+    .router-fade-enter,.router-fade-leave {
+      opacity: 0;
+    }
+  }
+  
 </style>

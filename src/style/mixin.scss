@@ -1,0 +1,33 @@
+//头部导航栏尺寸
+@mixin headerTop-size {
+  width: 100%;
+  height: 44px;
+}
+
+//字体大小和颜色
+@mixin sc($size,$color) {
+  font-size: $size;
+  color: $color;
+}
+
+//上下居中
+@mixin tbc {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//左右居中
+@mixin lrc {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+//上下左右居中
+@mixin center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}

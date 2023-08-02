@@ -2,13 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './router/router';
-
+import "../src/style/global.scss";
 
 Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes,
-  mode: "history"
+  mode: "hash"
 })
 
 new Vue({

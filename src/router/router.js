@@ -4,7 +4,7 @@ const home = () => import("../page/Home/home.vue")
 
 export default [{
   path: "/",
-  components: App,//顶层路由，对应index.html
+  component: App,//顶层路由，对应index.html
   children: [
     {
       path: "",
@@ -12,7 +12,7 @@ export default [{
     },
     {
       path: "/home",
-      components: home
+      component: home
     }
 
   ]
