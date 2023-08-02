@@ -5,13 +5,17 @@
         <router-view></router-view>
       </keep-alive>
     </transition>
+    <home></home>
   </div>
 </template>
 
 <script>
+import home from './page/Home/home.vue';
 export default {
   name: "App",
-  components: {},
+  components: {
+    home
+  },
 };
 </script>
 
@@ -23,5 +27,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.router-fade-enter-active ,.router-fade-leave-active{
+  transition: opacity .3s;
+}
+.router-fade-enter,.router-fade-leave {
+  opacity: 0;
 }
 </style>

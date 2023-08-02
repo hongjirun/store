@@ -1,11 +1,11 @@
 <template>
-  <div id="app">111</div>
+  <div>
+    <p>this is home!</p>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
