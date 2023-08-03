@@ -1,7 +1,7 @@
 <template>
   <div id="footer-container">
-    <router-link to="/home" class="footer-item" @click="changeColor">
-      <i :class="{'iconfont':true,'icon-shouye1':$route.path.indexOf('home')!==-1,'icon-shouye':$route.path.indexOf('home')===-1}"></i>
+    <router-link to="/home" class="footer-item" >
+      <i :class="{'iconfont':true,'icon-shouye1':$route.path.indexOf('home')!==-1,'icon-shouye':$route.path.indexOf('home')===-1,'itemActive': $route.path.indexOf('home') !== -1 }"></i>
       <span>首页</span>
     </router-link>
     <router-link to="/address" class="footer-item">
@@ -48,7 +48,10 @@ export default {
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      color: rgb(17, 244, 17);
+      color: #504f4f;
+      .itemActive {
+        color: green;
+      }
       span {
         color: black;
       }
