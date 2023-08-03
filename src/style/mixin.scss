@@ -31,3 +31,10 @@
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
+
+//文字超出容器隐藏加省略号
+@mixin ellipsis {
+  text-overflow: ellipsis;//超出容器范围变成省略号
+  overflow: hidden;//隐藏超出范围内容
+  white-space: nowrap;//不换行
+}

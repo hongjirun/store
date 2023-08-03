@@ -56,3 +56,17 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 新写法：父组件只能在template标签上使用v-slot='名字'
 父组件用v-slot，子组件用<slot></slot>标签
 ```
+
+### icon 的引入
+
+[iconfont 引入方法](https://blog.csdn.net/qq_35430000/article/details/87103050 "https://blog.csdn.net/qq_35430000/article/details/87103050")
+
+```plaintext
+使用在线链接的话，可以在fontclass中更新链接，复制链接导入在App.vue上的style中
+```
+
+### 伪类选择器 &:nth-child()
+
+```plaintext
+可以在同样的元素中进行选择其中那个来进行修改
+```

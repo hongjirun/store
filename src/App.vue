@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <!--$route.meta.KeepAlive为true进行组件缓存  -->
-    <transition name="router-fade" mode="in-out">
+    <transition name="router-fade" mode="out-in">
       <keep-alive >
         <router-view v-if="$route.meta.KeepAlive"></router-view>
       </keep-alive>
       <!--$route.meta.KeepAlive为false不进行组件缓存，跳转到这里  -->
     </transition>
-    <transition name="router-fade" mode="in-out">
+    <transition name="router-fade" mode="out-in">
       <router-view v-if="!$route.meta.keepAlive"></router-view>
     </transition>
 
@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "//at.alicdn.com/t/c/font_4195175_u9j08ph6o3k.css";
   #app {
     
     .router-fade-enter-active ,.router-fade-leave-active{
