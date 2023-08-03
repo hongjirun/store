@@ -16,6 +16,20 @@
       <span v-else class="login-span">登录|注册</span>
 
     </router-link>
+    <!-- 订单界面头部名字 -->
+    <div class="order-title" v-if="orderName">
+      <span>订单</span>
+    </div>
+
+    <!-- 订单页面搜索框 -->
+    <router-link to="/order/search" class="order-search" v-if="search">
+      <i class="iconfont icon-sousuo"></i>
+      
+    </router-link>
+    <!-- 我的界面头部名字 -->
+    <div class="mine-title" v-if="mineName">
+      <span>我的</span>
+    </div>
   </div>
 </template>
 
@@ -27,7 +41,7 @@ export default {
     }
   },
   //address用于判断是否显示头部定位地址
-  props:["address"]
+  props:["address","search","orderName","mineName"]
 }
 </script>
 
@@ -56,7 +70,7 @@ export default {
       }
 
     }
-
+    //登录
     .user-login {
       @include tbc;
       @include sc(16px,#000);
@@ -64,6 +78,29 @@ export default {
       font-weight: 600;
       text-decoration: none;
     }
+    //订单搜索框
+    .order-search {
+      @include tbc;
+      @include sc(16px,#000);
+      left: 5px;
+      text-decoration: none;
+    }
+    //订单title
+    .order-title {
+      @include center;
+      @include sc(20px,#000);
+      font-weight: bold;
+      
+    }
+
+    //我的title
+    .mine-title {
+      @include center;
+      @include sc(20px,#000);
+      font-weight: bold;
+      
+    }
+
   }
 
 </style>

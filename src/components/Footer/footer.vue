@@ -1,17 +1,17 @@
 <template>
   <div id="footer-container">
     <router-link to="/home" class="footer-item" >
-      <i :class="{'iconfont':true,'icon-shouye1':$route.path.indexOf('home')!==-1,'icon-shouye':$route.path.indexOf('home')===-1,'itemActive': $route.path.indexOf('home') !== -1 }"></i>
+      <i :class="{'iconfont':true,'icon-shouye1':true ,'itemActive': $route.path.indexOf('home') !== -1 }"></i>
       <span>首页</span>
     </router-link>
-    <router-link to="/address" class="footer-item">
-      <i class="iconfont icon-dingdan"></i>
+    <router-link to="/order" class="footer-item">
+      <i class="iconfont icon-dingdan" :class="{ 'itemActive': $route.path.indexOf('order') !== -1 }"></i>
       <span>订单</span>
     </router-link>
-    <div class="footer-item">
-      <i class="iconfont icon-wode"></i>
+    <router-link to="/mine" class="footer-item">
+      <i class="iconfont icon-wode" :class="{ 'itemActive': $route.path.indexOf('mine') !== -1 }"></i>
       <span>我的</span>
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -50,6 +50,7 @@ export default {
       text-decoration: none;
       color: #504f4f;
       .itemActive {
+        font-weight: bolder;
         color: green;
       }
       span {
