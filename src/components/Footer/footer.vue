@@ -32,6 +32,7 @@ export default {
 
 <style scoped lang="scss">
   @import "../../style/mixin.scss";
+  @import "../../style/global.scss";
   #footer-container {
     width: 100%;
     height: 50px;
@@ -39,7 +40,7 @@ export default {
     left: 0;
     bottom: 0;
     display: flex;
-    border-top: 1px solid #e7e4e4;
+    border-top: 1px solid $line;
     
     .footer-item {
       display: flex;

@@ -1,17 +1,20 @@
 <template>
   <div id="address-container">
-    <span>
-      qqqq
-    </span>
+    <header-top addressGoback="address" addressName="address"></header-top>
+    <address-search></address-search>
     <foot-bottom></foot-bottom>
   </div>
 </template>
 
 <script>
+import headerTop from '../../components/Header/header.vue';
+import addressSearch from './children/addressSearch.vue';
 import footBottom from '../../components/Footer/footer.vue';
 export default {
   components: {
-    footBottom
+    headerTop,
+    footBottom,
+    addressSearch
   }
 
 }

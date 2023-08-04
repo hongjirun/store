@@ -2,6 +2,7 @@ import App from '../App.vue';
 //实现懒加载，减少消耗
 const home = () => import("../page/Home/home.vue")
 const address = () => import("../page/Address/address.vue")
+const addressChoiceCity=()=>import("../page/Address/children/addressChoiceCity.vue")
 const login = () => import("../page/Login/login.vue")
 const order = () => import("../page/Order/order.vue")
 const orderSearch = () => import("../page/Order/children/order-search.vue")
@@ -24,6 +25,11 @@ export default [{
     {
       path: "/address",
       component: address
+      
+    },
+    {
+      path: "/address/citychoice",
+      component: addressChoiceCity
       
     },
     {

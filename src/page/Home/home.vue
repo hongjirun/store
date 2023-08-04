@@ -2,7 +2,7 @@
 <template>
   <div id="home-container">
     <!-- 头部导航栏组件 -->
-    <headerTop address="home"> <!--address="home"是父组件传递给子组件数据判断显示-->
+    <headerTop headerAddress="home"> <!--headerAddress="home"是父组件传递给子组件数据判断显示-->
         <span class="headLogo" @click="reload" slot="logo">嗨吃外卖</span>
     </headerTop>
     <footerBottom></footerBottom>
