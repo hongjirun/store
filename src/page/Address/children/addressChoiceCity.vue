@@ -3,27 +3,52 @@
     <headerTop addressGoback="addressChoiceCity" addressChoCity="addressChoiceCity"></headerTop>
     <!-- 选择城市页面搜索框 -->
     <div class="choiceCityInput">
-      <div class="searchCity">
+      <div class="searchCity" >
         <i class="iconfont icon-sousuo icon"></i>
-        <input type="text" placeholder="输入城市名进行搜索" class="CitySeaInput">
+        <input type="text" placeholder="输入城市名进行搜索" class="CitySeaInput" v-model="inputContent">
       </div>
     </div>
     <!-- 当前定位城市显示 -->
-    <div class="showPosition">
+    <div class="showPosition" v-if="!isInput">
       <div class="showdetail">
         <i class="iconfont icon-dingwei icon"></i>
         <span >当前定位城市</span>
         <span class="cityName" @click="$router.go(-1)">广州市</span>
       </div>
     </div>
+    <!-- 显示输入搜索框内容对应文字的城市列表 -->
+    <div class="cityList" v-if="isInput">
+      <ul>
+          <li v-for="(item,i) in cities" :key="i">{{ item }}</li>
+      </ul>
+      
+      
+    </div>
   </div>
 </template>
 
 <script>
 import headerTop from '../../../components/Header/header.vue';
-export default {
+export default { 
+  data() { 
+    return {
+      cities: ["北京", "上海", "广州", "成都", "杭州"],
+      inputContent:"",//搜索城市输入框内容
+    }
+  },
   components: {
     headerTop,
+  },
+  computed: {
+    //判断输入框是否有内容，有的话就返回true，没有的话就返回false
+    isInput() { 
+      if (this.inputContent !== '') {
+        return true;
+      }
+      else { 
+        return false;
+      }
+    }
   }
 }
 </script>
@@ -79,6 +104,15 @@ export default {
           font-weight: 510;
         }
       }
+    }
+
+    //搜索展示对应的城市列表
+    .cityList {
+      @include sc(16px,#000);
+      position: fixed;
+      top: 84px;
+      left: 0;
+
     }
 
   }
