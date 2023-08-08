@@ -4,7 +4,7 @@
     <!-- 城市下拉列表跳转 -->
     <router-link to="/address/citychoice" class="city-list">
       <i class="iconfont icon-dingwei"></i>
-      <span>广州市</span>
+      <span>{{ $store.state.positionCity }}</span>
       <i class="iconfont icon-xiala"></i>
     </router-link>
     <!-- 收货地址搜索框 -->

@@ -70,3 +70,26 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ```plaintext
 可以在同样的元素中进行选择其中那个来进行修改
 ```
+
+### 正则表达式模糊搜索城市名字
+
+```
+//根据搜索框的内容来用正则表达式进行匹配筛选
+    matchCity() {
+      const inputValue = this.inputContent.trim();//获取搜索框的内容然后去掉前后空格，防止匹配不了
+      if (inputValue === '') {
+        return [];//输入值为空，返回空数组
+      }
+      const pattern = new RegExp(inputValue.split("").join(".*"), "i");//将搜索框内容输入生成正则表达式
+      return this.cities.filter(city => pattern.test(city));
+
+    }
+```
+
+### vuex
+
+```
+Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension (opens new window)，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。
+```
+
+[vuex 稀土掘金根据官方教程完美解释](https://juejin.cn/post/6928468842377117709)

@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import routes from './router/router';
 import "../src/style/global.scss";
 import "./assets/fonts/iconfont/iconfont.css";
+import store from '../src/store/index';
 
 Vue.use(VueRouter)
 
@@ -14,5 +15,6 @@ const router = new VueRouter({
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')
