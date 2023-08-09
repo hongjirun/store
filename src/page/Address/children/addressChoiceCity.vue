@@ -46,9 +46,9 @@
       <!-- 城市按字母分类列表 -->
       <div class="cityListAll" v-show="!isInput">
         <div class="listModule" v-for="(item, index) in cityListAll" :key="index">
-          <div>{{ index }}</div>
+          <div class="letter">{{ index }}</div>
           <ul>
-            <li v-for="(city, i) in item" :key="i">{{ city }}</li>
+            <li v-for="(city, i) in item" :key="i" @click="changePoitCity(city)">{{ city }}</li>
           </ul>
         </div>
       </div>
@@ -167,6 +167,7 @@ export default {
             margin-left: 5px;
             font-size: 16px;
             font-weight: bolder;
+            cursor: pointer;
           }
         }
       }
@@ -194,10 +195,11 @@ export default {
     //页面主要内容
     .CityContent {
       width: 100%;
-      height: 100%;
-      
-      
-      
+      height: calc(100% - 140px);
+      position: fixed;
+      top: 140px;
+      left: 0;
+      overflow-y: auto;
       //热门城市列表
       .hotCity {
         @include sc(16px,#000);
@@ -236,8 +238,27 @@ export default {
       //城市按字母分类列表
       .cityListAll {
         width: 100%;
-        
-        
+        margin: 30px 0 0 5px;
+        .listModule {
+          .letter {
+            width: 90%;
+            margin: 20px 0 0px 5px;
+            @include sc(15px,grey);
+            border-bottom: 1px solid $line;
+            padding-bottom: 5px;
+          }
+          ul {
+            list-style: none;
+            
+            li {
+              width: 90%;
+              @include sc(14px,#000);
+              padding: 10px 0;
+              
+              border-bottom: 1px solid $line;
+            }
+          }
+        }
         
         
       }
