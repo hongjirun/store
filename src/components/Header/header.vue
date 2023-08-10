@@ -26,6 +26,12 @@
       <span>选择城市</span>
     </div>
 
+    <!-- 增加收货地址页面title -->
+    <div class="addAddress-title" v-if="addAddress">
+      <span>新增收货地址</span>
+    </div>
+
+
     <!-- 登录|注册跳转 -->
     <router-link to="/login" class="user-login">
       <!-- 登录成功显示图标 -->
@@ -61,7 +67,7 @@ export default {
     }
   },
   //address用于判断是否显示头部定位地址
-  props: ["headerAddress", "search", "orderName", "mineName", "addressGoback", "addressName", "addressChoCity"],
+  props: ["headerAddress", "search", "orderName", "mineName", "addressGoback", "addressName", "addressChoCity","addAddress"],
   computed: {
     //首页跳转定位改变头部导航栏背景颜色
     changeBc() { 
@@ -117,6 +123,12 @@ export default {
       @include sc(18px,#000);
       font-weight: bold;
       
+    }
+    //增加收货地址页面title
+    .addAddress-title {
+      @include center;
+      @include sc(18px,#000);
+      font-weight: bold;
     }
 
     //头部导航栏登录|注册功能

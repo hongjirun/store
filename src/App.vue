@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "//at.alicdn.com/t/c/font_4195175_ilbwy65n25r.css";
+  @import "//at.alicdn.com/t/c/font_4195175_1kegsx06tygi.css";
   #app {
     
     .router-fade-enter-active ,.router-fade-leave-active{

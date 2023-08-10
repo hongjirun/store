@@ -3,6 +3,7 @@ import App from '../App.vue';
 const home = () => import("../page/Home/home.vue")
 const address = () => import("../page/Address/address.vue")
 const addressChoiceCity=()=>import("../page/Address/children/addressChoiceCity.vue")
+const addAddress=()=>import("../page/Address/children/addAddress.vue")
 const login = () => import("../page/Login/login.vue")
 const order = () => import("../page/Order/order.vue")
 const orderSearch = () => import("../page/Order/children/order-search.vue")
@@ -31,6 +32,10 @@ export default [{
       path: "/address/citychoice",
       component: addressChoiceCity
       
+    },
+    {
+      path: "/address/addaddress",
+      component: addAddress
     },
     {
       path: "/login",

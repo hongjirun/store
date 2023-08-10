@@ -34,7 +34,7 @@
     </div>
 
     <!-- 页面主要内容 -->
-    <div class="CityContent" @scroll="handleScroll">
+    <div class="CityContent" >
       <!-- 热门城市显示 -->
       <div class="hotCity" v-show="!isInput">
         <div class="hotTitle">热门城市</div>
@@ -104,12 +104,8 @@ export default {
     changePoitCity(positionCity) { 
       this.$store.commit("changePositionCity", { city: positionCity });
       this.$router.go(-1);
-    },
-    handleScroll(event) { 
-      
-       
-      
     }
+    
   }
 }
 </script>
