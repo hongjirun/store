@@ -14,5 +14,6 @@ export const mutations = {
   //改变增加收货地址页面的区号插值
   changeCodeIndex(state, payload) { 
     state.codeIndex = payload.codeIndex;
-  }
+  },
+  
 }

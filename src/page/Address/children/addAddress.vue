@@ -2,7 +2,7 @@
 <template>
   <div id="addAddress-container">
     <div :class="{'hidden':$store.state.showareacodePop}">
-      <div class="test"></div>
+      <div class="hidden-grey"></div> <!--弹窗出来后给上一层灰层-->
       <header-top addressGoback="addAddress" addAddress="addAddress"></header-top>
       <div class="background" >
         <div class="container">
@@ -41,10 +41,12 @@
           </div>
         </div>
       </div>
-      
     </div>
+    <!-- 弹窗选择区号 -->
+    <transition name="fade" mode="out-in">
+      <areacode-pop v-if="$store.state.showareacodePop" class="pop" ></areacode-pop>
+    </transition>
     
-    <areacode-pop v-if="$store.state.showareacodePop" class="pop"></areacode-pop>
   </div>
 </template>
 
@@ -55,8 +57,8 @@ export default {
   data() { 
     return {
       biaoqian: ["家", "公司", "学校", "父母家"],
-      index_judge: 0,
-      
+      index_judge: 0, 
+       
     }
   },
   components: {
@@ -84,19 +86,23 @@ export default {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: grey;
-      opacity: 0.1;
-      z-index: 999;
-      .test {
+       //选择区号弹窗出来时添加蒙层
+      .hidden-grey {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgb(11, 11, 11);
-        opacity: 0.1;
+        background-color: rgb(102, 100, 100);
+        opacity: 0.7;
         z-index: 999;
+        animation: cancelAnimation 0.5s ease-out;
       }
+      @keyframes cancelAnimation {
+        0%{opacity: 0;};
+        100%{opacity:0.7 ;}
+      }   
+      
     } 
     .background {
       width: 100%;
@@ -108,8 +114,6 @@ export default {
       background-size: cover;
       background-position: center center;
       z-index: 2;
-      
-    
       
       .container {
         width: 95%;
@@ -270,10 +274,30 @@ export default {
         }
       }
     }
+    //区号选择弹窗
     .pop {
       position: fixed;
       z-index: 10000;
-      
+      //animation: popupAnimation 0.3s ease-out;
     }
+    /**
+    @keyframes popupAnimation {
+      0% { opacity: 0; width: 0; height: 0; }
+      100% { opacity: 1; width: 100%; height: 200px; }
+    }   
+    */
+    //进入开始时和结束开始时状态设置透明度为0
+    .fade-enter,.fade-leave {
+      opacity: 0;
+    }
+    //进入和离开过程时间设置
+    .fade-enter-active,.fade-leave-active {
+      transition: opacity 0.8s;
+    }
+    //离开页面时状态设置透明度为0
+    .fade-leave-to {
+      opacity: 0;
+    }
+    
   }
 </style>

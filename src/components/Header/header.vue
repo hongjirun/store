@@ -7,30 +7,14 @@
     <!--首页当前地址-->
     <router-link to="/address" v-if="headerAddress" class="address"> 
       <i class="iconfont icon-dingwei addr-avatar"></i> <!--定位图标-->
-      <span class="addr-span">广州市天河区太古汇</span> <!--定位地址-->
+      <span class="addr-span">{{ $store.state.receiptAddress }}</span> <!--定位地址-->
       <i class="iconfont icon-youjiantou addr-avatar"></i> <!--右箭头-->
     </router-link> 
 
-    <!-- 首页收货地址返回按钮 -->
+    <!-- 头部返回按钮 -->
     <div @click="$router.go(-1)" v-if="addressGoback" class="goback">
       <i class="iconfont icon-zuojiantou"></i>
     </div>
-
-    <!-- 首页收货地址title -->
-    <div class="address-title" v-if="addressName">
-      <span>选择收货地址</span>
-    </div>
-
-    <!-- 收货地址选择城市title -->
-    <div class="address-title" v-if="addressChoCity">
-      <span>选择城市</span>
-    </div>
-
-    <!-- 增加收货地址页面title -->
-    <div class="addAddress-title" v-if="addAddress">
-      <span>新增收货地址</span>
-    </div>
-
 
     <!-- 登录|注册跳转 -->
     <router-link to="/login" class="user-login">
@@ -40,19 +24,20 @@
       <span v-else class="login-span">登录|注册</span>
     </router-link>
 
-    <!-- 订单界面头部名字 -->
-    <div class="order-title" v-if="orderName">
-      <span>订单</span>
-    </div>
-
     <!-- 订单页面搜索框 -->
     <router-link to="/order/search" class="order-search" v-if="search">
       <i class="iconfont icon-sousuo"></i>    
     </router-link>
 
-    <!-- 我的界面头部名字 -->
-    <div class="mine-title" v-if="mineName">
-      <span>我的</span>
+
+    <!-- 头部页面标题 -->
+    <div class="title">
+      <span v-if="title">手机登录</span>
+      <span v-if="addressName">选择收货地址</span>
+      <span v-if="addressChoCity">选择城市</span>
+      <span v-if="addAddress">新增收货地址</span>
+      <span v-if="orderName">订单</span>
+      <span v-if="mineName">我的</span>
     </div>
   </div>
 </template>
@@ -67,11 +52,11 @@ export default {
     }
   },
   //address用于判断是否显示头部定位地址
-  props: ["headerAddress", "search", "orderName", "mineName", "addressGoback", "addressName", "addressChoCity","addAddress"],
+  props: ["headerAddress", "search", "orderName", "mineName", "addressGoback", "addressName", "addressChoCity","addAddress","title"],
   computed: {
     //首页跳转定位改变头部导航栏背景颜色
     changeBc() { 
-      if (this.$route.path.indexOf('address') !== -1) {
+      if (this.$route.path.indexOf('address') !== -1 || this.$route.path.indexOf('login') !== -1) {
         return this.headerTopColorSpecial;
       }
       else { 
@@ -117,20 +102,6 @@ export default {
       text-decoration: none
     }
 
-    //首页收货地址title
-    .address-title {
-      @include center;
-      @include sc(18px,#000);
-      font-weight: bold;
-      
-    }
-    //增加收货地址页面title
-    .addAddress-title {
-      @include center;
-      @include sc(18px,#000);
-      font-weight: bold;
-    }
-
     //头部导航栏登录|注册功能
     .user-login {
       @include tbc;
@@ -146,20 +117,13 @@ export default {
       left: 5px;
       text-decoration: none;
     }
-    //订单title
-    .order-title {
-      @include center;
-      @include sc(20px,#000);
-      font-weight: bold;
-      
-    }
 
-    //我的title
-    .mine-title {
+    
+    //头部页面标题
+    .title {
       @include center;
       @include sc(20px,#000);
       font-weight: bold;
-      
     }
 
   }

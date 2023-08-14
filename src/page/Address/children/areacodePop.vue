@@ -71,6 +71,7 @@ export default {
     left: 0;
     background-color: #fff;
     border-radius: 10px;
+    
     .header {
       width: 100%;
       height: 40px;
@@ -80,7 +81,9 @@ export default {
       border-bottom: 1px solid $line;
       .cancel {
         margin-left: 5px;
+        
       }
+      
       .title {
         margin: 0 auto;
         font-size: 16px;
@@ -105,6 +108,7 @@ export default {
         
         li {
           margin: 20px 0;
+          transition: font-size,font-weight,color 0.6s linear;
         }
         .isSelect {
           width: 100%;
