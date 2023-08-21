@@ -15,5 +15,8 @@ export const mutations = {
   changeCodeIndex(state, payload) { 
     state.codeIndex = payload.codeIndex;
   },
-  
+  //改变登录是否成功图标
+  changeLoginIconfont(state, payload) { 
+    state.loginSuccess = payload.loginSuccess;
+  }
 }

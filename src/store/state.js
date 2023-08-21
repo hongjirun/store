@@ -105,5 +105,8 @@ export const state = {
       "富阳区千岛湖",
       "临安区西天竺"
     ]},
-  ]
+  ],
+  //登录是否成功切换图标
+  loginSuccess: false,
+
 }

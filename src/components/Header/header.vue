@@ -19,7 +19,7 @@
     <!-- 登录|注册跳转 -->
     <router-link to="/login" class="user-login">
       <!-- 登录成功显示图标 -->
-      <i class="iconfont icon-yonghu login-avatar" v-if="loginSuccess"></i>
+      <i class="iconfont icon-yonghu login-avatar" v-if="$store.state.loginSuccess"></i>
       <!-- 还未登录显示文字 -->
       <span v-else class="login-span">登录|注册</span>
     </router-link>
@@ -46,7 +46,7 @@
 export default {
   data() { 
     return {
-      loginSuccess: false,
+      // loginSuccess: false,
       headerTopColorUin: "rgb(66, 141, 28)",
       headerTopColorSpecial: "#fff",
     }
