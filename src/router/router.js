@@ -20,7 +20,8 @@ export default [{
     },
     {
       path: "/home",
-      component: home
+      component: home,
+     
 
     },
     {

@@ -1,6 +1,11 @@
+<!-- 账号验证码登录||退登界面 -->
 <template>
   <div id="login-container">
     <header-top title="login" addressGoback="login"></header-top>
+    <!-- 还未登录进行验证登录页面即loginSuccess=false -->
+    <div class="logining">
+      
+    </div>
     <!-- logo图片 -->
     <div class="logo">
       <span>嗨吃外卖</span>
@@ -27,7 +32,7 @@
       </div>
       <!-- 登录按钮 -->
       <div class="loginButtonHidden">
-        <button class="loginButton" @click="compareResult" :class="{'confirmBtuColor': teleNumberTrue&&isPwdInpQuanTrue}" :disabled="!(teleNumberTrue && isPwdInpQuanTrue)">登录</button>
+        <button class="loginButton" @click="compareResult" :class="{'confirmBtuColor': teleNumberTrue&&isPwdInpQuanTrue}" :disabled="!(teleNumberTrue && isPwdInpQuanTrue)" >登录</button>
       </div>
           
     </form>
@@ -105,23 +110,25 @@ export default {
     compareResult() { 
       if (this.pwdInput !== this.verify) {
         this.isVerifyFalse = true;
+        console.log(this.$store.state.loginSuccess);
       }
       else if (this.pwdInput === this.verify) { 
         this.isVerifyFalse = false;
         this.$store.commit("changeLoginIconfont", { loginSuccess: true });
-        this.$router.go(-1);
+        this.$router.push("/home");
       }
     },
     //判断验证码长度是否正确
     isPwdInpquanTrue() { 
       if (this.pwdInput.length === 6) {
         this.isPwdInpQuanTrue = true;
+        
       }
       else { 
         this.isPwdInpQuanTrue = false;
       }
-    }
-
+    },
+    
   },
   computed: {
     //输入正确返回true
