@@ -107,6 +107,12 @@ export const state = {
     ]},
   ],
   //登录是否成功切换图标
-  loginSuccess: false,
+  loginSuccess: true,
+  //成功登录的号码
+  teleNumber: '',
+  //页脚上的三个按钮
+  isShouye: true,
+  isDingdan: false,
+  isMine:false
 
 }

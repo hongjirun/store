@@ -1,8 +1,10 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4195175 */
-  src: url('iconfont.woff2?t=1691030243630') format('woff2'),
-       url('iconfont.woff?t=1691030243630') format('woff'),
-       url('iconfont.ttf?t=1691030243630') format('truetype');
+  /* Color fonts */
+  src: 
+       url('iconfont.woff2?t=1692784184147') format('woff2'),
+       url('iconfont.woff?t=1692784184147') format('woff'),
+       url('iconfont.ttf?t=1692784184147') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +13,74 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-yaopinjiaocun-01:before {
+  content: "\e65f";
+}
+
+.icon-Birthday-Cake:before {
+  content: "\e610";
+}
+
+.icon-meishi:before {
+  content: "\e7a2";
+}
+
+.icon-shucaishuiguo:before {
+  content: "\e608";
+}
+
+.icon-ic_market:before {
+  content: "\e600";
+}
+
+.icon-jiahao:before {
+  content: "\e726";
+}
+
+.icon-shangla:before {
+  content: "\e797";
+}
+
+.icon-zuojiantou:before {
+  content: "\e64e";
+}
+
+.icon-shouye:before {
+  content: "\e605";
+}
+
+.icon-shouye1:before {
+  content: "\e684";
+}
+
+.icon-shouye1-copy:before {
+  content: "\eb87";
+}
+
+.icon-dingdan:before {
+  content: "\e897";
+}
+
+.icon-wode:before {
+  content: "\e8a0";
+}
+
+.icon-dingdan-copy:before {
+  content: "\eb88";
+}
+
+.icon-wode-copy:before {
+  content: "\eb89";
+}
+
+.icon-youjiantou:before {
+  content: "\e6b5";
+}
+
+.icon-yonghu:before {
+  content: "\e788";
 }
 
 .icon-xiala:before {

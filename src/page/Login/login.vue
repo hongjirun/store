@@ -2,40 +2,53 @@
 <template>
   <div id="login-container">
     <header-top title="login" addressGoback="login"></header-top>
-    <!-- 还未登录进行验证登录页面即loginSuccess=false -->
-    <div class="logining">
-      
-    </div>
     <!-- logo图片 -->
     <div class="logo">
       <span>嗨吃外卖</span>
     </div>
-    <!-- 登录界面 -->
-    <form class="login-frame">
-      <!-- 手机号输入 -->
-      <div class="userInput">
-        <!--输入框用正则表达式来限制手机号码的输入格式-->
-        <input type="text" placeholder="请输入手机号"  v-model="teleNumber" @click="inputClick">
-        <!-- 手机号码输入后验证,格式正确则切换按钮 -->
-        <button @click="checkTeleNumber" v-if="!isTrue" :class="{'buttonColor': teleNumberTrue }">获取验证码</button>
-        <button v-else>重新发送{{ count }}s</button>
 
-      </div>
-      <!-- 验证码输入 --> 
-      <input type="text" placeholder="请输入验证码" class="pwdInput" v-model="pwdInput" @input="isPwdInpquanTrue" @click="inputClick">  
-      <!-- 如果号码输入错误，跳出来进行显示 -->
-      <div class="telTip">
-        <!-- 根据不同的输入内容进行提示 -->
-        <span v-show="isTelEmpty&&!isTelFalse && !isVerifyFalse">手机号为空,请先输入完整的11位手机号码</span>
-        <span v-show="isTelFalse&&!isTelEmpty && !isVerifyFalse">请输入正确的手机号格式</span>
-        <span v-show="!isTelFalse && !isTelEmpty &&isVerifyFalse">验证码不正确</span>
-      </div>
-      <!-- 登录按钮 -->
-      <div class="loginButtonHidden">
-        <button class="loginButton" @click="compareResult" :class="{'confirmBtuColor': teleNumberTrue&&isPwdInpQuanTrue}" :disabled="!(teleNumberTrue && isPwdInpQuanTrue)" >登录</button>
-      </div>
+    <!-- 还未登录进行验证登录页面即loginSuccess=false -->
+    <div class="logining" v-if="!$store.state.loginSuccess">
+      <!-- 登录界面 -->
+      <form class="login-frame">
+        <!-- 手机号输入 -->
+        <div class="userInput">
+          <!--输入框用正则表达式来限制手机号码的输入格式-->
+          <input type="text" placeholder="请输入手机号"  v-model="teleNumber" @click="inputClick">
+          <!-- 手机号码输入后验证,格式正确则切换按钮 -->
+          <button @click="checkTeleNumber" v-if="!isTrue" :class="{ 'buttonColor': teleNumberTrue }">获取验证码</button>
+          <button v-else>重新发送{{ count }}s</button>
+
+        </div>
+        <!-- 验证码输入 --> 
+        <input type="text" placeholder="请输入验证码" class="pwdInput" v-model="pwdInput" @input="isPwdInpquanTrue" @click="inputClick">  
+        <!-- 如果号码输入错误，跳出来进行显示 -->
+        <div class="telTip">
+          <!-- 根据不同的输入内容进行提示 -->
+          <span v-show="isTelEmpty && !isTelFalse && !isVerifyFalse">手机号为空,请先输入完整的11位手机号码</span>
+          <span v-show="isTelFalse && !isTelEmpty && !isVerifyFalse">请输入正确的手机号格式</span>
+          <span v-show="!isTelFalse && !isTelEmpty && isVerifyFalse">验证码不正确</span>
+        </div>
+        <!-- 登录按钮 -->
+        <div class="loginButtonHidden">
+          <button class="loginButton" @click="compareResult" :class="{ 'confirmBtuColor': teleNumberTrue && isPwdInpQuanTrue }" :disabled="!(teleNumberTrue && isPwdInpQuanTrue)" >登录</button>
+        </div>
           
-    </form>
+      </form>
+    </div>
+    
+    <!-- 登录成功后点击登录页面的显示内容 -->
+    <div class="loginSuccess" v-if="$store.state.loginSuccess">
+      <div class="userNumber">
+        <i class="iconfont icon-wode"></i>
+        <span>账号：</span>
+        <span>{{ $store.state.teleNumber }}</span>
+      </div>
+      <!-- 退出登录按钮 -->
+      <div class="logOut">
+        <button class="logOutButton" @click="logOut">退出登录</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -115,6 +128,7 @@ export default {
       else if (this.pwdInput === this.verify) { 
         this.isVerifyFalse = false;
         this.$store.commit("changeLoginIconfont", { loginSuccess: true });
+        this.$store.commit("changeTeleNumber", { teleNumber: this.teleNumber });
         this.$router.push("/home");
       }
     },
@@ -128,6 +142,10 @@ export default {
         this.isPwdInpQuanTrue = false;
       }
     },
+    //点击退出登录改变$store.state.loginSuccess=true,变为false
+    logOut() {
+      this.$store.commit("changeLoginIconfont", { loginSuccess: false });
+    }
     
   },
   computed: {
@@ -174,73 +192,104 @@ export default {
       }
       
     }
-    //登录界面
-    .login-frame {
+    //还没登录成功界面
+    .logining {
+      .login-frame {
+        position: fixed;
+        top: 244px;
+        left: 0;
+        @include wh(100%,200px);
+        
+        //手机号输入
+        .userInput {
+          width: 95%;
+          display: flex;
+          margin: 10px 10px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid $line;
+          //手机号码输入框
+          input {
+            border: none;
+            outline: none;
+            margin-right: 100px;
+          }
+          //获取验证码按钮
+          button {
+            border: none;
+            background-color: transparent;
+          }
+          //验证码点击按钮在手机号输入正确时改变颜色
+          .buttonColor {
+            color: green;
+          }
+        }
+        //验证码输入
+        .pwdInput {
+          width: 95%;
+          border: 0;
+          outline: none;
+          padding-bottom: 10px;
+          border-bottom: 1px solid $line;
+          margin: 10px 10px;
+        }
+        //如果号码输入错误，跳出来进行显示
+        .telTip {
+          span {
+            @include sc(12px,red);
+            margin-left: 10px;
+          }
+        }
+
+
+        //登录按钮  
+        .loginButtonHidden {
+          .loginButton {
+            width: 95%;
+            height: 50px;
+            background-color: rgb(178, 224, 178);
+            border: 0;
+            border-radius: 5px;
+            margin: 20px 10px 10px 10px;
+            
+          }
+          .confirmBtuColor {
+            background-color: green;
+          
+          }
+        }
+        
+      }
+    }
+    //登录成功后点击登录页面的显示内容
+    .loginSuccess {
       position: fixed;
       top: 244px;
       left: 0;
       @include wh(100%,200px);
-      
-      //手机号输入
-      .userInput {
-        width: 95%;
+      .userNumber {
         display: flex;
-        margin: 10px 10px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid $line;
-        //手机号码输入框
-        input {
-          border: none;
-          outline: none;
-          margin-right: 100px;
-        }
-        //获取验证码按钮
-        button {
-          border: none;
-          background-color: transparent;
-        }
-        //验证码点击按钮在手机号输入正确时改变颜色
-        .buttonColor {
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        .iconfont {
+          margin-right: 5px;
           color: green;
         }
-      }
-      //验证码输入
-      .pwdInput {
-        width: 95%;
-        border: 0;
-        outline: none;
-        padding-bottom: 10px;
-        border-bottom: 1px solid $line;
-        margin: 10px 10px;
-      }
-      //如果号码输入错误，跳出来进行显示
-      .telTip {
-        span {
-          @include sc(12px,red);
-          margin-left: 10px;
+        span:nth-child(3) {
+          font-weight: bolder;
         }
       }
-
-
-      //登录按钮  
-      .loginButtonHidden {
-        .loginButton {
+      .logOut {
+        .logOutButton {
           width: 95%;
           height: 50px;
-          background-color: rgb(178, 224, 178);
+          background-color: green;
           border: 0;
           border-radius: 5px;
           margin: 20px 10px 10px 10px;
-          
-        }
-        .confirmBtuColor {
-          background-color: green;
-         
+
         }
       }
-      
-      
-     
     }
   }
 </style>

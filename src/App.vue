@@ -23,9 +23,8 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "//at.alicdn.com/t/c/font_4195175_1kegsx06tygi.css";
+  @import "//at.alicdn.com/t/c/font_4195175_q10sdljsxhq.css";
   #app {
-    
     .router-fade-enter-active ,.router-fade-leave-active{
       transition: opacity .3s;
     }

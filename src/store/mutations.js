@@ -18,5 +18,19 @@ export const mutations = {
   //改变登录是否成功图标
   changeLoginIconfont(state, payload) { 
     state.loginSuccess = payload.loginSuccess;
+  },
+  //登录成功改变登录的号码
+  changeTeleNumber(state, payload) { 
+    state.teleNumber = payload.teleNumber;
+  },
+  //改变页脚三个按钮的状态
+  changeShouye(state, payload) { 
+    state.isShouye = payload.isShouye;
+  },
+  changeDingdan(state, payload) { 
+    state.isDingdan = payload.isDingdan;
+  },
+  changeMine(state, payload) { 
+    state.isMine = payload.isMine;
   }
 }
