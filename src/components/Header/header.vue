@@ -19,9 +19,10 @@
     <!-- 登录|注册跳转 -->
     <router-link to="/login" class="user-login">
       <!-- 登录成功显示图标 -->
-      <span class="iconfont icon-yonghu login-avatar" v-if="$store.state.loginSuccess"></span>
+      <span class="iconfont icon-yonghu login-avatar" v-show="$store.state.loginSuccess"></span>
+      <!-- <span v-show="$store.state.loginSuccess">{{ $store.state.teleNumber }}</span> -->
       <!-- 还未登录显示文字 -->
-      <span v-else class="login-span">登录|注册</span>
+      <span v-show="!$store.state.loginSuccess" class="login-span">登录|注册</span>
     </router-link>
 
     <!-- 订单页面搜索框 -->

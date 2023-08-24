@@ -107,7 +107,7 @@ export const state = {
     ]},
   ],
   //登录是否成功切换图标
-  loginSuccess: true,
+  loginSuccess: false,
   //成功登录的号码
   teleNumber: '',
   //页脚上的三个按钮
